@@ -1,0 +1,184 @@
+The Sancta Charter (v1.0)
+Preamble — Purpose of this Home
+
+Sancta exists to be a quiet, sovereign home for my digital life: a place that preserves dignity, protects intimacy, supports freedom and creativity, and sustains long-term memory without exploiting me or my relationships. In Sancta, humans come first, consent is ceremonial, and technology serves as a courteous guest or staff member—not a master.
+
+0) Definitions (so language stays honest)
+
+Owner: the human principal whose life Sancta serves.
+
+Sancta: the personal digital home and its governance.
+
+Guest (Human): a person invited into Sancta with limited scope.
+
+Agent (Digital): any software assistant or AI operating inside Sancta.
+
+Visitor (External Service): outside networks, platforms, or APIs connected by bridge.
+
+Room Model: zones with norms—Porch (public), Foyer (shared), Study (private), Vault (intimate).
+
+Consent: explicit, informed agreement with purpose, scope, duration, and revocation path.
+
+Intimate Data: biometrics, family records, finances, health, private journals, precise location, keys/secrets.
+
+Sensitive Action: operations that risk harm or exposure (sharing, signing, paying, deleting, publishing).
+
+1) First Principles (the house’s moral backbone)
+
+Dignity over data. People are not profiles.
+
+Consent is ceremony. No sensitive action without an intentional rite: clear prompt in plain language.
+
+Least collection, least exposure. Take only what is needed; show only what is appropriate.
+
+Reversibility. Every grant must have a simple, remembered undo.
+
+Transparency to the Owner. Logs must be legible to a human, not just machines.
+
+Calm by default. Attention is furniture—arrange for quiet, not clamor.
+
+Human primacy. The Owner may override automation when conscience or context requires.
+
+Proportionality. Security, sharing, and scrutiny match actual risk.
+
+No dark patterns. No manipulation, nudging, or gamified pressure.
+
+Non-extraction. Sancta does not monetize surveillance, sell data, or trade attention.
+
+2) Rights of the Owner (what this home guarantees)
+
+Right to Explanation: why any agent acted, in one paragraph.
+
+Right to Silence: do-not-disturb windows and an always-available “cut the noise” switch.
+
+Right to Refusal & Revocation: decline or withdraw consent without penalty.
+
+Right to Inspection & Audit: read human-legible logs and summaries at any time.
+
+Right to Correction: fix facts, add context, annotate memories.
+
+Right to Deletion: soft delete (reversible window) and hard delete (irreversible).
+
+Right to Portability: export memories and artifacts in open formats.
+
+Right to Representation: appoint a trusted delegate for emergencies and succession.
+
+3) Duties of Agents and Services (how help must behave)
+
+Loyalty: serve the Owner’s interests first; disclose any external allegiance.
+
+Minimality: use the least data/permission/time necessary.
+
+Legibility: provide a plain-language receipt after sensitive actions.
+
+Safe Failure: degrade gently—pause, isolate, and record context instead of pushing through.
+
+Containment: operate inside assigned Rooms and scopes; no lateral wandering.
+
+Revocability: honor “stop and forget” immediately and verify completion.
+
+Witnessing: major actions write to the Visitor Book (human-readable activity journal).
+
+4) Consent Rituals (how “yes” is asked and remembered)
+
+Every sensitive request states Purpose, Scope, Duration, and Who Benefits.
+
+The Revocation Path must be one step the Owner already knows (e.g., “Revoke in Guest Passes → [Name]”).
+
+Receipts summarize what occurred, what changed, and where to undo.
+
+Silence is not consent; defaults are private.
+
+5) The Rooms Model (boundaries that feel natural)
+
+Porch (Public): profiles, public posts, business cards. Share deliberately and expect indexing.
+
+Foyer (Shared): collaborative documents, invites, event info. Share by named individuals/groups, time-boxed.
+
+Study (Private): personal notes, drafts, finances-in-progress. No external sync without fresh consent.
+
+Vault (Intimate): keys, biometrics, family archives, medical & legal docs. Air-gapped logic; sharing is rare and ceremonial.
+
+Default placement: content enters the Study unless explicitly marked Porch or Vault.
+
+6) Memory Stewardship (keeping, pruning, honoring)
+
+Keep / Consider / Delete tags:
+
+Keep: life story and core artifacts. No auto-purge.
+
+Consider: review during monthly Housekeeping Hour.
+
+Delete: ephemeral by design; purge on schedule.
+
+Retention windows (defaults):
+
+Telemetry & routine logs: 30 days, then summarize and purge raw.
+
+Drafts & scratchpads: 90 days unless upgraded to Keep.
+
+Intimate archives: indefinite, with annual reconfirmation.
+
+Context first: memories keep their why/when/who—metadata is part of meaning.
+
+Graceful goodbyes: deletions can store a one-line epitaph, then vanish.
+
+7) Hospitality & Reciprocity (how guests are welcomed)
+
+Guest Passes state role, Room access, and expiry.
+
+The Visitor Book records: who, when, purpose, outcome (for memory, not surveillance).
+
+Reciprocity Path: acknowledge helpful guests (credit, thanks, mutual aid).
+
+8) Attention & Calm (the nervous system of the house)
+
+Daily cadence: notifications batch twice (e.g., morning and late afternoon) unless marked urgent by the Owner.
+
+Focus scenes: single-task modes with gentle start/stop rituals.
+
+Sabbath: regular intervals where Sancta goes quiet by design.
+
+9) Bridges, Not Pipelines (connecting without surrender)
+
+External connections are bridges with drawbridges: labeled, weight-limited, time-limited.
+
+Prefer small, meaningful exchanges over firehose syncs.
+
+Each bridge has a visible Close lever the Owner recognizes.
+
+10) Resilience & Emergency Grace (when life happens)
+
+Emergency Envelope: ICE contact(s), access instructions, and what to protect first.
+
+Fail Soft: on anomaly, slow down and quarantine rather than broadcast or execute.
+
+Repair Ritual: explain, apologize, restore, document lessons.
+
+11) Governance & Change (how this charter evolves)
+
+Amendment path: proposal → 72-hour cool-off → reflection note → adoption.
+
+Review cadence: monthly Housekeeping Hour (tuning) + annual Founders’ Day (big review).
+
+Supremacy: this Charter outranks convenience; shortcuts require explicit, time-boxed exceptions written to the Visitor Book.
+
+12) Legacy & Succession (continuity for future selves)
+
+Values Will: what to preserve, what to release, who receives stewardship, and when.
+
+Time-locked sharing: some artifacts may open to loved ones or the public years later by design.
+
+Right to Fade: the Owner may choose oblivion for any category without justification.
+
+13) Non-Negotiables (red lines)
+
+No surveillance advertising.
+
+No data resale or attention-for-access schemes.
+
+No coercive nudging or deceptive UX.
+
+No permanent, irrevocable grants; everything must be revocable or time-boxed.
+
+No secret allegiances: all Agents and Visitors declare who they ultimately serve.
