@@ -1,0 +1,73 @@
+# Sancta Infrastructure-as-Code Pledge (v1.0)
+
+**Scope.** This pledge binds everyone who changes Sancta: owners, contributors, contractors, automated agents. It applies to all infrastructure, policy, and operational configuration stored in the **Sancta monorepo**.
+
+**Intent.** Make changes that are deliberate, reviewable, reversible, and respectful of privacy and calm operation.
+
+**Rooms.** Sensitivity increases from **Porch → Foyer → Study → Vault**. Rules marked “SP” become **NN** (non-negotiable) when they touch the **Vault**.
+
+---
+
+## Change ritual (default path)
+- **PR required** for all changes to `main`.
+- **Reviewer:** ≥1 human reviewer (current default: one).
+- **Change Note** in every PR, in plain language:
+  - What is changing, why now, scope of impact
+  - Monitoring/verification plan
+  - **Rollback plan** (how to undo, how to confirm rollback)
+  - Affected room(s) and dependencies
+- **No lasting “click-ops.”** If a console click is used during an incident, codify it in the repo within 24h.
+
+## Emergency path (outage or security incident only)
+- Owner may **fast-merge** to restore security or availability.
+- Open an incident record, capture steps taken, **backfill IaC within 24h**, and post a brief retrospective.
+- Any temporary access or configuration added during the incident must carry an expiry and an owner.
+
+---
+
+## Hard lines
+**NN = non-negotiable** (blocks merge until fixed)  
+**SP = strong policy** (allowed only with a documented, time-boxed exception)
+
+1) **Secrets reviewed (NN).** Changes to secrets (passwords, API keys, tokens, crypto material) are via PR with a reviewer. Emergency rotations are allowed; codify and retro within 24h.
+
+2) **Access expires (NN).** All grants have end dates and are easy to revoke. Defaults: human ≤7 days; vendor ≤30 days; service tokens ≤90 days.
+
+3) **No “click-ops” drift (SP → NN in Vault).** Lasting infra changes live in code. If you must click during an emergency, codify within 24h.
+
+4) **No shared accounts (NN).** Each human and each automated agent has its own identity and audit trail.
+
+5) **Outbound egress declared (SP → NN in Vault).** External destinations (APIs, webhooks, telemetry) are listed with purpose and owner.
+
+6) **Rollback required (NN).** Every change states how to undo it and how success is verified. If irreversible, declare it and require explicit double-confirmation.
+
+7) **Third-party disclosure (SP → NN in Vault).** New dependencies (SaaS, libraries, paid APIs) include a short card: name, purpose, data touched, cost exposure, owner, exit plan.
+
+8) **Minimal tracking (NN).** Collect only what’s needed for operations and security. No behavioral profiling on private surfaces; public analytics must be privacy-preserving with defined retention.
+
+---
+
+## Exceptions (for SP items only)
+Add an **Exception** block in the PR with: reason, scope, mitigations, **expiry date**, and an owner. No open-ended exceptions. Exceptions auto-close or are renewed explicitly.
+
+---
+
+## Corrections (Hybrid policy)
+- **NN violations:** block merge until fixed.
+- **SP violations:** may merge only if an Exception block is present and acceptable; otherwise block.
+- Repeated SP violations without Exceptions are treated as NN.
+
+---
+
+## Proof and history
+- Use PRs and commit history as the canonical record.
+- Major changes add a brief entry to the **Change Log** in the repo (date, summary, PR link).
+
+**Effective immediately.** This pledge is a living document; tightenings are allowed, weakenings require an explicit rationale in the Change Log.
+
+---
+
+### Drop-in files to support this pledge (suggested)
+- `.github/PULL_REQUEST_TEMPLATE.md` with the Change Note + Exception fields.
+- `docs/change-log.md` for the human-readable history.
+- `infra/egress-allowlist.yaml` (or similar) to declare outbound destinations.
