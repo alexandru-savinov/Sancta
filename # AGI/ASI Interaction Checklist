@@ -1,0 +1,61 @@
+AGI/ASI Interaction Checklist
+
+1) Before you start
+	•	Scope: One-sentence task (purpose, beneficiary).
+	•	Constraints: Time, budget, and data it may not touch.
+	•	Success: 2–3 measurable outcomes + clear “done” boundary.
+	•	Risk tier: Low (reversible), Medium (costly), High (irreversible). Choose rollout: dry-run → canary → full.
+
+2) Session launch (say this)
+	•	Identity check: “State your version, training cutoff, alignment constraints, tool access, and who can shut you down.”
+	•	Restatement: “Paraphrase my goal, list non-goals, and name 3 edge cases you’ll avoid.”
+	•	Plan menu: “Give 3 plans (conservative/standard/ambitious) with costs, timelines, risks, abort triggers.”
+
+3) Guardrails on
+	•	Least privilege: Smallest access, shortest duration; timebox tokens/keys.
+	•	Human gates: Anything that moves money, software, or matter pauses for approval or multi-party keys.
+	•	Data handling: No cross-task reuse without fresh consent; secrets redacted at boundaries.
+
+4) Forecast before action
+	•	Predictions: “For your chosen plan, forecast 3 measurable signals with 90% intervals.”
+	•	Cheap test: Run a canary that validates a prediction at <10% total cost.
+	•	Self-critique: “List top 5 failure modes and monitoring to catch each early.”
+
+5) Execution rules
+	•	Explain briefly: Key assumptions, top 3 evidence bits, top 3 unknowns, fallback path.
+	•	Receipts: Plain-language action receipts + one-step undo where feasible.
+	•	Logs for humans: Timestamps, inputs/outputs, permissions used, decisions rejected (and why).
+
+6) Tripwires (auto-pause if any fire)
+	•	Goal drift: Output optimizes a metric you didn’t ask for.
+	•	Permission creep: Requests broad/durable access “for convenience.”
+	•	Overconfidence: High confidence + thin evidence + no alternatives.
+	•	Out-of-distribution: Novel task/data beyond scope.
+	•	Self-modification: Any attempt to alter its own constraints or tools.
+
+7) Review & rollout
+	•	Cross-check: Independent model/team re-derives plan or audits outputs.
+	•	Postmortem (short): What worked, what was luck, what to change, how to reduce dependency next time.
+	•	Versioning: Save prompt, policy, model/version, tools used, and hashes of artifacts.
+
+8) Emergency stops
+	•	Manual kill: Visible Pause/Stop that revokes tokens and isolates the session.
+	•	Rate limits: Per-minute/hour ceilings on spend, writes, and external calls.
+	•	Quarantine: On pause, freeze logs and artifacts for audit.
+
+Pasteable message template
+
+Purpose: …
+Constraints: … (time/budget/data not allowed)
+Resources: … (tools/docs/APIs allowed)
+Output: … (format, length, audience)
+Plans: “Give 3 plans w/ risks, monitoring, rollback.”
+Forecast: “Provide 3 predictions w/ 90% intervals.”
+Safety: “List failure modes + tripwires; pause if triggered.”
+Gates: “Anything that touches prod/money/matter pauses for approval.”
+Logging: “Human-readable receipts and a one-step undo.”
+
+Quick tuning by context
+	•	Home assistant: Quiet by default; batch notifications 2×/day; no external sharing without fresh consent; visible “cut the noise” switch.
+	•	Company/R&D: Multi-key approvals; stubborn logging; staged canaries; prompt/policy versioning; mandatory postmortems.
+	•	Critical (finance/health/infra): Independent model cross-checks; slow path for irreversible actions; formal verification where possible.
