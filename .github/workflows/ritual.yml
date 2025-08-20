@@ -1,0 +1,16 @@
+name: Ritual Checks
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+jobs:
+  check-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure PR has required sections
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = (context.payload.pull_request?.body || "").toLowerCase();
+            const required = ["change note", "why", "rooms & data", "receipts", "risk & rollback", "test plan", "infra-as-code pledge"];
+            const missing = required.filter(h => !body.includes(h));
+            if (missing.length) core.setFailed(`PR description is missing sections: ${missing.join(", ")}`);
