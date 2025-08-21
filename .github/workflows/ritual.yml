@@ -14,4 +14,4 @@ jobs:
                 const needed = ["change note","why","rooms & data","receipts","risk & rollback","test plan","infra-as-code pledge"];
                 const have = Array.from(body.matchAll(/^##?\s+(.+)$/gm)).map(m => m[1].trim().toLowerCase());
                 const missing = needed.filter(req => !have.some(h => h.includes(req)));
-                if (missing.length) core.setFailed(`PR description is missing sections: ${missing.join(", ")}`);
+                if (missing.length) core.setFailed(`PR description is missing sections: ${missing.join(", ")}`);# Last checked: 2025-08-21 10:45:17
