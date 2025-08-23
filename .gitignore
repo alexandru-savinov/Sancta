@@ -3,6 +3,35 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Sancta-specific ignores
+# Receipts contain potentially sensitive system information (hostname, username, etc.)
+receipts/*.jsonl
+
+# But keep documentation, examples, and tools
+!receipts/README.md
+!receipts/*.example.jsonl
+!receipts/*.template.jsonl
+!receipts/Sanitize-Receipts.ps1
+
+# Temporary and test files
+receipts/*test*
+receipts/*temp*
+receipts/*backup*
+receipts/*.tmp
+
+# Archived receipts (often contain accumulated sensitive data)
+receipts/archive/
+receipts/backup/
+receipts/*.zip
+receipts/*.7z
+receipts/*.tar.gz
+
+# Pattern for allowing specific sanitized or redacted receipts
+# To include a specific receipt: git add -f receipts/specific-file.jsonl
+# Or create sanitized versions with .sanitized.jsonl extension
+!receipts/*.sanitized.jsonl
+!receipts/*.redacted.jsonl
+
 # User-specific files
 *.rsuser
 *.suo
