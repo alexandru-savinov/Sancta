@@ -13,8 +13,6 @@ eceipts\powershell-hardening.audit.jsonl",
 )
 
 # Validate and ensure receipts directory exists
-$ReceiptDir = Split-Path $ReceiptPath -Parent
-$ReceiptDir = Split-Path $ReceiptPath -Parent
 
 # Check if receipt folder exists and handle fallback with human gate
 if (-not (Test-Path $ReceiptDir)) {
