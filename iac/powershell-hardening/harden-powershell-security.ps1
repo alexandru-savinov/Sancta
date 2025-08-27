@@ -45,8 +45,16 @@ if ($currentEnabled) {
             New-Item -Path $regPath -Force | Out-Null
         }
         Set-ItemProperty -Path $regPath -Name 'EnableScriptBlockLogging' -Value 1
-        $results.ScriptBlockLogging = "Enabled"
-        Write-Host "Script Block Logging: Enabled" -ForegroundColor Green
+        
+        # Verify the change actually worked
+        $verifyEnabled = (Get-ItemProperty -Path $regPath -Name 'EnableScriptBlockLogging' -ErrorAction SilentlyContinue).EnableScriptBlockLogging -eq 1
+        if ($verifyEnabled) {
+            $results.ScriptBlockLogging = "Successfully enabled"
+            Write-Host "Script Block Logging: Successfully enabled" -ForegroundColor Green
+        } else {
+            $results.ScriptBlockLogging = "Failed: Registry value not set properly"
+            Write-Host "Script Block Logging: Failed - Registry value not set properly" -ForegroundColor Red
+        }
     } catch {
         $results.ScriptBlockLogging = "Failed: $($_.Exception.Message)"
         Write-Host "Script Block Logging: Failed - $($_.Exception.Message)" -ForegroundColor Red
@@ -54,7 +62,7 @@ if ($currentEnabled) {
 }
 
 # 2. Execution Policy
-$currentPolicy = Get-ExecutionPolicy -Scope MachinePolicy -ErrorAction SilentlyContinue
+$currentPolicy = Get-ExecutionPolicy -Scope LocalMachine -ErrorAction SilentlyContinue
 $targetPolicy = 'RemoteSigned'
 
 if ($currentPolicy -eq $targetPolicy) {
@@ -65,9 +73,17 @@ if ($currentPolicy -eq $targetPolicy) {
     Write-Host "Execution Policy: [DRY RUN] Would set to $targetPolicy (current: $currentPolicy)" -ForegroundColor Yellow
 } else {
     try {
-        Set-ExecutionPolicy -ExecutionPolicy $targetPolicy -Scope MachinePolicy -Force
-        $results.ExecutionPolicy = "Set to $targetPolicy"
-        Write-Host "Execution Policy: Set to $targetPolicy (was: $currentPolicy)" -ForegroundColor Green
+        Set-ExecutionPolicy -ExecutionPolicy $targetPolicy -Scope LocalMachine -Force
+        
+        # Verify the change actually worked
+        $verifyPolicy = Get-ExecutionPolicy -Scope LocalMachine -ErrorAction SilentlyContinue
+        if ($verifyPolicy -eq $targetPolicy) {
+            $results.ExecutionPolicy = "Successfully set to $targetPolicy"
+            Write-Host "Execution Policy: Successfully set to $targetPolicy (was: $currentPolicy)" -ForegroundColor Green
+        } else {
+            $results.ExecutionPolicy = "Failed: Policy not set properly (current: $verifyPolicy)"
+            Write-Host "Execution Policy: Failed - Policy not set properly (current: $verifyPolicy)" -ForegroundColor Red
+        }
     } catch {
         $results.ExecutionPolicy = "Failed: $($_.Exception.Message)"
         Write-Host "Execution Policy: Failed - $($_.Exception.Message)" -ForegroundColor Red
