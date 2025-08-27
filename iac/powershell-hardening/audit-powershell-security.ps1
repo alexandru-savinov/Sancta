@@ -64,11 +64,6 @@ if (-not (Test-Path $ReceiptDir)) {
     }
 }
 
-# Defensive programming - wrap calls that might fail
-function Invoke-Safely { 
-    param([scriptblock]$Code)
-    try { & $Code } catch { $null }
-}
 
 # Write standardized receipt entries (JSONL format)
 function Write-Receipt {
