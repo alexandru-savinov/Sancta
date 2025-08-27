@@ -1,4 +1,4 @@
-# Sanc# Define receipt path at# Sancta PowerShell Security Audit
+# Sancta PowerShell Security Audit
 # Read-only audit of PowerShell security posture. No changes are made.
 # Following Sancta principles of transparency, accessibility, and defensive programming
 
