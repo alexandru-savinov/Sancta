@@ -1,8 +1,19 @@
-# Sanc# Define receipt path at script level
-$ReceiptPath = "${PSScriptRoot}\..\..
-eceipts\powershell-hardening.audit.jsonl"
+# Sanc# Define receipt path at# Sancta PowerShell Security Audit
+# Read-only audit of PowerShell security posture. No changes are made.
+# Following Sancta principles of transparency, accessibility, and defensive programming
+
+param(
+    [string]$ReceiptPath = "${PSScriptRoot}\..\..
+eceipts\powershell-hardening.audit.jsonl",
+    [switch]$Quiet,
+    [switch]$JsonOnly,
+    [switch]$NoColor,
+    [switch]$HighContrast,
+    [switch]$Wide
+)
 
 # Validate and ensure receipts directory exists
+$ReceiptDir = Split-Path $ReceiptPath -Parent
 $ReceiptDir = Split-Path $ReceiptPath -Parent
 
 # Check if receipt folder exists and handle fallback with human gate
@@ -22,11 +33,13 @@ if (-not (Test-Path $ReceiptDir)) {
     
     $ReceiptPath = $TempReceiptPath
     Write-Host "Proceeding with temporary receipt storage..." -ForegroundColor Green
-}a PowerShell Security Audit
-# Read-only audit of PowerShell security posture. No changes are made.
-# Following Sancta principles of transparency, accessibility, and defensive programming
+}
 
-# Define receipt path at script level - local vault preferred, fallback to Sancta repo
+# Defensive programming - wrap calls that might fail
+function Invoke-Safely { 
+    param([scriptblock]$Code)
+    try { & $Code } catch { $null }
+}
 $VaultReceiptPath = "V:\Study\Reciepts\powershell-hardening.audit.jsonl"
 $RepoReceiptPath = "${PSScriptRoot}\..\..\receipts\powershell-hardening.audit.jsonl"
 
