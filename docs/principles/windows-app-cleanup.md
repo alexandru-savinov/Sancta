@@ -1,5 +1,11 @@
 # Windows App Cleanup: Principles & Technical Approach
 
+> **Status: dormant reglementation.** Sancta currently operates no Windows host,
+> and the executable IaC that implemented this guidance (`iac/windows-app-cleanup/`)
+> has been removed. This document is retained as the *rules* any future Windows
+> app-cleanup must satisfy; recover the scripts from git history if a Windows
+> host returns.
+
 ## Purpose
 
 Provide a safe, repeatable, least-privilege procedure for removing unwanted Windows applications while following Sancta principles of dignity, consent, and reversibility.

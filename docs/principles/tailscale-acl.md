@@ -1,0 +1,54 @@
+# Tailscale ACL — Governance Reference (not the deployed policy)
+
+> **Layer:** Principles (normative intent), **not** implementation code.
+> **Source of truth:** the live, deployed policy is
+> [`policy.hujson`](https://github.com/alexandru-savinov/tailscale/blob/main/policy.hujson)
+> in the `alexandru-savinov/tailscale` repo. It is tested and applied to the
+> tailnet via the `tailscale/gitops-acl-action` GitOps workflow (test on PR,
+> apply on merge). **Do not deploy from this file.**
+> _Last reviewed: 2026-05-31._
+
+## Why this file exists
+
+This document records the *principles* the Sancta tailnet ACL must satisfy, so
+the constitution has an opinion the live policy can be reviewed against. It is
+deliberately descriptive of intent, not a copy of the policy — keeping a second
+copy of the rules here would drift and assert a falsehood about the running
+system (the previous version of this file did exactly that: a 22-line skeleton
+that only knew `tag:sancta-gw` while the real policy carried seven tags).
+
+When the principles below and `policy.hujson` disagree, **`policy.hujson` wins**
+as the statement of what is true today; this file states what *ought* to be true
+and should be updated (or the policy changed) to close the gap.
+
+## Principles the live ACL must satisfy
+
+1. **Tag ownership is explicit.** Every `tag:sancta-*` has a named owner
+   (`alexandru-savinov@github`) or an `autogroup`. No untagged or
+   unowned-tag devices carry grants.
+2. **Least privilege by default.** Grants name specific destination tags and
+   ports; no blanket `*:*` access. Admin reach is scoped to the ports a role
+   actually needs.
+3. **One admin identity.** Human access flows from `alexandru-savinov@github`
+   (and `autogroup:admin`); there are no shared accounts (per IaC Pledge).
+4. **SSH is intentional and reviewable.** Each `ssh` rule states `src`, `dst`
+   tag, and `users`. `action: "check"` (re-auth) is used only where a standing
+   accept is too broad; every rule's intent is obvious from context.
+5. **Re-registration must not require console clicks.** Route/exit-node
+   advertisement from tagged hosts is handled by `autoApprovers` so devices
+   rejoin without manual approval. (Note: auto-approval is *not* retroactive —
+   re-advertise an existing route to trigger it.)
+6. **The policy carries its own tests.** `tests` blocks in `policy.hujson`
+   assert the key allow/deny expectations so a regression fails the PR before
+   it reaches the tailnet.
+
+## Host ↔ tag mapping
+
+The authoritative mapping of which device carries which `tag:sancta-*` is
+maintained alongside the policy in the `tailscale` repo (`policy.hujson` tag
+owners). Every machine in Sancta is on the tailnet; there are no off-tailnet
+hosts. Every `tag:sancta-*` in the policy is backed by a live NixOS host in
+`nixos-config` — there are **no reserved or orphan role tags**. (The tags
+`sancta-bedrock`, `sancta-ha`, and `sancta-idp` previously existed as
+forward-looking placeholders with no backing host; they have been retired
+from `policy.hujson` rather than carried as dormant inventory.)

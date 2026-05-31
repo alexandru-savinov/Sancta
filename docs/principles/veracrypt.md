@@ -1,5 +1,11 @@
 # VeraCrypt: Principles & IaC Guidance (Sancta)
 
+> **Status: dormant reglementation.** Sancta currently operates no Windows host,
+> and the executable IaC that implemented this guidance
+> (`iac/veracrypt/install-veracrypt.ps1`) has been removed. This document is
+> retained as the *rules* any future VeraCrypt vault must satisfy; recover the
+> script from git history if a Windows host returns.
+
 ## Purpose
 
 Provide a safe, repeatable, least-privilege procedure and IaC template for creating and operating a local VeraCrypt file-backed vault on Windows. This guidance is for local machine vaults meant to hold intimate or sensitive data; it deliberately does not touch OS disk encryption (BitLocker), bootloaders, or other system disks.
@@ -61,7 +67,9 @@ Provide a safe, repeatable, least-privilege procedure and IaC template for creat
 
 - Vault file pattern: `%USERPROFILE%\\LocalVault\\<machine>-vault.hc` (example: `study-nb-prd-01-vault.hc`).
 - Header backups: dedicated external path (example `D:\Sancta\Vaults\Backups\`), use date-stamped filenames.
-- IaC script: `iac/veracrypt/install-veracrypt.ps1` (idempotent template and runbook).
+- IaC script: _removed_ — the idempotent template/runbook formerly at
+  `iac/veracrypt/install-veracrypt.ps1` was retired with the rest of the Windows
+  IaC; restore it from git history if a Windows host returns.
 
 ## References
 
