@@ -47,8 +47,8 @@ and should be updated (or the policy changed) to close the gap.
 The authoritative mapping of which device carries which `tag:sancta-*` is
 maintained alongside the policy in the `tailscale` repo (`policy.hujson` tag
 owners). Every machine in Sancta is on the tailnet; there are no off-tailnet
-hosts. Some tags (`sancta-bedrock`, `sancta-ha`, `sancta-idp`) exist in the
-policy as reserved role tags with **no corresponding always-on NixOS host**
-in `nixos-config` today (e.g. there is no IdP machine). They are kept as
-forward-looking placeholders, not asserted as live devices; reconciling the
-inventory (retire them or back them with a host) is follow-up work.
+hosts. Every `tag:sancta-*` in the policy is backed by a live NixOS host in
+`nixos-config` — there are **no reserved or orphan role tags**. (The tags
+`sancta-bedrock`, `sancta-ha`, and `sancta-idp` previously existed as
+forward-looking placeholders with no backing host; they have been retired
+from `policy.hujson` rather than carried as dormant inventory.)
