@@ -6,7 +6,7 @@
 > in the `alexandru-savinov/tailscale` repo. It is tested and applied to the
 > tailnet via the `tailscale/gitops-acl-action` GitOps workflow (test on PR,
 > apply on merge). **Do not deploy from this file.**
-> _Last reviewed: 2026-05-31._
+> _Last reviewed: 2026-11-25._
 
 ## Why this file exists
 
@@ -47,8 +47,8 @@ and should be updated (or the policy changed) to close the gap.
 The authoritative mapping of which device carries which `tag:sancta-*` is
 maintained alongside the policy in the `tailscale` repo (`policy.hujson` tag
 owners). Every machine in Sancta is on the tailnet; there are no off-tailnet
-hosts. Every `tag:sancta-*` in the policy is backed by a live NixOS host in
-`nixos-config` — there are **no reserved or orphan role tags**. (The tags
-`sancta-bedrock`, `sancta-ha`, and `sancta-idp` previously existed as
-forward-looking placeholders with no backing host; they have been retired
-from `policy.hujson` rather than carried as dormant inventory.)
+hosts. Every `tag:sancta-*` in the policy **must** be backed by a live host
+declared in `nixos-config`: when a host is retired, its tag and every grant that
+names it leave the policy in the same change, rather than staying as dormant
+inventory. (On 2026-05-31 the placeholder tags `sancta-bedrock`, `sancta-ha`
+and `sancta-idp`, which never had a backing host, were retired this way.)
