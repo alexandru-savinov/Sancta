@@ -1,5 +1,10 @@
 # Sancta Compliance Achievement - Thank You Note
 
+> **Status: historical receipt (2025-08-23).** The Windows scripts this note
+> lists were removed when Sancta became reglementation-only (PR #13); the rules
+> they implemented live on in `docs/principles/windows-app-cleanup.md`. Recover
+> the scripts from git history if a Windows host returns.
+
 **Document Type**: Sancta Compliance Receipt  
 **Operation**: Windows App Cleanup Implementation  
 **Status**: SUCCESSFULLY COMPLETED  

@@ -77,16 +77,10 @@ Receipts are kept indefinitely for audit purposes, but should be managed careful
   receipts/backup/
   ```
 
-### Cleanup Commands
-```powershell
-# Archive receipts older than 90 days
-$archiveDate = (Get-Date).AddDays(-90)
-Get-ChildItem receipts/*.jsonl | Where-Object { $_.LastWriteTime -lt $archiveDate } | 
-    Move-Item -Destination "receipts/archive/$(Get-Date -Format 'yyyy-MM')/"
-
-# Compress old archives
-Compress-Archive -Path "receipts/archive/2024*" -DestinationPath "receipts/2024-archive.zip"
-```
+### Cleanup Rules
+- Move receipts older than 90 days into `receipts/archive/<yyyy-MM>/`.
+- Compress each archive year once it is closed (for example `receipts/2024-archive.zip`).
+- Any tool that does this must itself write a receipt of what it moved or compressed.
 
 ### Sensitive Data Lifecycle
 1. **Active receipts** (0-30 days) - Keep for immediate rollback needs

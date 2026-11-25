@@ -43,4 +43,8 @@ Principles, not rules—one intent, many expressions; led by text.
 
 ## Unification
 - Single semantic layer shared across text, voice, motion, sound, and haptics.
-- The same event yields coherent cues,
+- The same event yields coherent cues, never contradictory ones, across whatever modalities are present.
+- Text stays canonical; other modalities amplify its meaning and never replace or override it.
+- Any single modality suffices on its own—each channel is enhancement, never a prerequisite for understanding.
+- Cues degrade gracefully: mute, reduce, or remove a channel and the intent survives intact.
+- Modes reshape intensity and texture, never the underlying semantics.
